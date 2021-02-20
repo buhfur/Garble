@@ -34,42 +34,27 @@ public class Garble{
 			FileReader fr = new FileReader(path);
 			BufferedReader br = new BufferedReader(fr);
 			String line = br.readLine();
+
+
+			ArrayList<String> wordList = new ArrayList<String>();
 			while(line != null){
 				line = br.readLine();
-				
-				//compare the users input to the file output adds the answer to list to make sure user doesnt get points for the same answer more than once
-				if ((String)userGuess.toUpperCase() == (String)line){
-					System.out.println("found an answer!");
-					//make sure the answer is not in the foundAnswers list
-
-
-					if(foundAnswers.contains((String)userGuess.toUpperCase()) == false){
-						// user gets points for the answer
-						FoundAnswer = true;	
-						//now add the answer to the array list
-						foundAnswers.add(userGuess.toUpperCase());
-						System.out.println("You've earned a point!");
-					}else{
-						System.out.println("You have already entered that answer!");	
-					}
-
-					
-					
-				}else{ 
-					String userGuessUp = userGuess.toUpperCase();
-					System.out.println(userGuessUp == (String)line);
-					System.out.printf("User entered : %s \n Line read was:  %s\n\n",(String)userGuess.toUpperCase(),(String)line); 
-				}
+				//add all the words in the file to an array list
+				wordList.add(line);
 				
 			}
-			//check the FoundAnswer boolean to see if the player earned a point, then reset the boolean
-			if (FoundAnswer == true) {
-				// add points based on time of completion
+			System.out.println(wordList);
+			//scan the list and see if the users input is in the arraylist
+			if(wordList.contains(userGuess.toUpperCase())){
 				score += 1;
-				//change found answer to false
-				FoundAnswer = false;
-			}				
+				System.out.println("you've got an answer right!");
+				//delete the word from the list 
+				wordList.remove(userGuess.toUpperCase());
+			}
 			//close the file 
+			System.out.printf("user score : %d\n\n " , score);
+			
+			System.out.println(wordList);
 			br.close();
 							
 		} catch( Exception ex){
