@@ -4,7 +4,7 @@ import java.io.*;
 
 //Ryan McVicker
 // 2.20.2021 
-
+//TODO: need to remove null and ' ' from wordlist
 
 // gonna try putting all the words in a text file and ask the user for an input and make sure the word is in there
 // for level 1 the letters are : "LWLMOE"
@@ -55,6 +55,7 @@ public class Garble{
 			System.out.printf("user score : %d\n\n " , score);
 			
 			System.out.println(wordList);
+			
 			br.close();
 							
 		} catch( Exception ex){
