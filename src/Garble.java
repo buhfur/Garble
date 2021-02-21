@@ -40,7 +40,6 @@ public class Garble{
 			}
 			//close the file 
 			
-			System.out.println(wordList);// TODO: remove in final product, same reason in line 51
 				
 			br.close();
 			//after file closes call game loop 
@@ -72,18 +71,26 @@ public class Garble{
 			GameBoard theBoard = new GameBoard();
 			theBoard.PrintBoard(wordList);
 			System.out.print("Enter a word : ");
-			String userGuess = userInput.next();				
+			String userGuess = userInput.nextLine();				
 			//check the users input 
-			if(wordList.contains(userGuess.toUpperCase()) && !foundAnswers.contains(userGuess.toUpperCase())){
-				
-				System.out.println("you've got an answer right!");
-				//delete the word from the list 
-				wordList.remove(userGuess.toUpperCase());
-				foundAnswers.add(userGuess.toUpperCase());//do i really need this list?
+			if(wordList.contains(userGuess.toUpperCase())) {
+				//make sure the player hasnt already guessed that word 
+				if ( foundAnswers.contains(userGuess.toUpperCase())){
+					System.out.println("you have already guessed that answer!");
+				}else{	
+					System.out.println("you've got an answer right!");
+					//delete the word from the list 
+					wordList.remove(userGuess.toUpperCase());
+					foundAnswers.add(userGuess.toUpperCase());//do i really need this list?
+				}
 				//clears the console using ANSI escape codes
-				System.out.print("\033[H\033[2J");  
-    				System.out.flush();
+//				System.out.print("\033[H\033[2J");  
+ //   				System.out.flush();
+			
+			System.out.println(wordList);// TODO: remove in final product, same reason in line 51
 				
+			}else{
+				System.out.println("that answer is wrong!");
 			}
 				
 		} 
