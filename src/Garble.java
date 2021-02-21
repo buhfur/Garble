@@ -5,12 +5,12 @@ import java.io.*;
 //Ryan McVicker
 // 2.20.2021 
 //TODO: need to remove null and ' ' from wordlist
+//TODO: make game loop and add in 
 
 // gonna try putting all the words in a text file and ask the user for an input and make sure the word is in there
 // for level 1 the letters are : "LWLMOE"
 public class Garble{
 
-	
 	public static void main(String[] args) throws IOException {
 		
 		// scanner object for reading input 
@@ -38,12 +38,16 @@ public class Garble{
 
 			ArrayList<String> wordList = new ArrayList<String>();
 			while(line != null){
+				
 				line = br.readLine();
 				//add all the words in the file to an array list
-				wordList.add(line);
-				
+				//also remove 'null' from the array list
+				if (line != null){
+					//adds the string to the arrayList
+					wordList.add(line);
+				}	
 			}
-			System.out.println(wordList);
+			System.out.println(wordList);//TODO: remove in final product, Reason: gives away the answers
 			//scan the list and see if the users input is in the arraylist
 			if(wordList.contains(userGuess.toUpperCase())){
 				score += 1;
@@ -54,13 +58,44 @@ public class Garble{
 			//close the file 
 			System.out.printf("user score : %d\n\n " , score);
 			
-			System.out.println(wordList);
-			
+			System.out.println(wordList);// TODO: remove in final product, same reason in line 51
+				
 			br.close();
+			//after file closes pass wordList into GameBoard to draw the board 
+			GameBoard(wordList);
 							
 		} catch( Exception ex){
 		}
 		
 	}
+	//method to display the game board
+	private static Map<String,String> GameBoard(ArrayList<String> wordList){
+		//create new array list from the pre existing word list 
+		//iterate through wordList
+		
+		// create dictionary to hold each word and create a certain amount of dashes determined by its length
+		Map<String, String> gameBoard = new HashMap<String, String>();	
+
+		for ( String index : wordList){
+			
+			System.out.println("element in array list : " + index);		
+			//find the size of the index 
+			System.out.println("Size of the index in the array list : " + index.length());
+			String dashes = "";
+			// for loop to determine how many dashes will be in the string  
+			for (int i = 0 ; i < index.length();i++){
+				dashes += " _ ";
+			}
+			gameBoard.put(index, dashes);
+		}
+
+		System.out.println("Game board: ");
+		for ( Map.Entry<String, String> entry : gameBoard.entrySet()){
+
+			System.out.println(entry.getValue());
+		}
+		return gameBoard;
+		
+	} 
 
 }
