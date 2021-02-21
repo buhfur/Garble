@@ -2,7 +2,6 @@ package com.ryanmcvicker12;
 import java.util.*;
 import javax.swing.*;
 import java.io.*;
-import com.ryanmcvicker12.GameBoard;
 //Ryan McVicker
 // 2.20.2021 
 //TODO: need to remove null and ' ' from wordlist
