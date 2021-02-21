@@ -14,20 +14,10 @@ public class Garble{
 	
 	public static void main(String[] args) throws IOException {
 		
-		// scanner object for reading input 
-		Scanner userInput = new Scanner(System.in);
-		System.out.println("Enter a word with the letters LWLMOE: ");
-		String userGuess = userInput.nextLine();
+		Garble obj = new Garble();
 		
 		//open the text file and check if the users input matches any of the words in the file
-		// want to use the fastest and most secure method for reading files 
 		String path = "level1.txt";
-		//add Integer variable to keep track of points?
-		int score = 0;
-		//array to store all the answers the user has given so far 
-		ArrayList<String> foundAnswers = new ArrayList<String>();	
-
-
 		
 		try{
 			boolean FoundAnswer = false;
@@ -48,38 +38,54 @@ public class Garble{
 					wordList.add(line);
 				}	
 			}
-			System.out.println(wordList);//TODO: remove in final product, Reason: gives away the answers
-			//scan the list and see if the users input is in the arraylist
-			if(wordList.contains(userGuess.toUpperCase())){
-				score += 1;
-				System.out.println("you've got an answer right!");
-				//delete the word from the list 
-				wordList.remove(userGuess.toUpperCase());
-			}
 			//close the file 
-			System.out.printf("user score : %d\n\n " , score);
 			
 			System.out.println(wordList);// TODO: remove in final product, same reason in line 51
 				
 			br.close();
-			//after file closes pass wordList into GameBoard to draw the board 
+			//after file closes call game loop 
+			obj.GameLoop(wordList);
 							
 		} catch( Exception ex){
 		}
 		
 	}
-	// main gameloop file 
 	
-	public static void GameLoop(){
+	//method returns the arraylist to print out the board 
+	public void GameLoop(ArrayList<String> wordList){
 
 		int PLAYER_SCORE;
 		boolean IS_GAME_OVER = false;
-		GameBoard levelOneBoard = new GameBoard();	
+//		GameBoard newBoard = new GameBoard();		
+		
+		ArrayList<String> foundAnswers = new ArrayList<String>();	
+		Scanner userInput = new Scanner(System.in);
 		//run until IS_GAME_OVER IS TRUE
 		while(IS_GAME_OVER != true){
 
 			// game loop here 
-			
+			// get answer from player and then check 
+			//first print the game board 
+			// get the players input
+			// determine if the player earned points
+			// clear the console ( only in command line version)
+			GameBoard theBoard = new GameBoard();
+			theBoard.PrintBoard(wordList);
+			System.out.print("Enter a word : ");
+			String userGuess = userInput.next();				
+			//check the users input 
+			if(wordList.contains(userGuess.toUpperCase()) && !foundAnswers.contains(userGuess.toUpperCase())){
+				
+				System.out.println("you've got an answer right!");
+				//delete the word from the list 
+				wordList.remove(userGuess.toUpperCase());
+				foundAnswers.add(userGuess.toUpperCase());//do i really need this list?
+				//clears the console using ANSI escape codes
+				System.out.print("\033[H\033[2J");  
+    				System.out.flush();
+				
+			}
+				
 		} 
 
 	}
