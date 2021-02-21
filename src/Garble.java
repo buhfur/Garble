@@ -4,13 +4,13 @@ import java.io.*;
 
 //Ryan McVicker
 // 2.20.2021 
-
+//TODO: need to remove null and ' ' from wordlist
+//TODO: make game loop and add in 
 
 // gonna try putting all the words in a text file and ask the user for an input and make sure the word is in there
 // for level 1 the letters are : "LWLMOE"
 public class Garble{
 
-	
 	public static void main(String[] args) throws IOException {
 		
 		// scanner object for reading input 
@@ -34,47 +34,68 @@ public class Garble{
 			FileReader fr = new FileReader(path);
 			BufferedReader br = new BufferedReader(fr);
 			String line = br.readLine();
+
+
+			ArrayList<String> wordList = new ArrayList<String>();
 			while(line != null){
+				
 				line = br.readLine();
-				
-				//compare the users input to the file output adds the answer to list to make sure user doesnt get points for the same answer more than once
-				if ((String)userGuess.toUpperCase() == (String)line){
-					System.out.println("found an answer!");
-					//make sure the answer is not in the foundAnswers list
-
-
-					if(foundAnswers.contains((String)userGuess.toUpperCase()) == false){
-						// user gets points for the answer
-						FoundAnswer = true;	
-						//now add the answer to the array list
-						foundAnswers.add(userGuess.toUpperCase());
-						System.out.println("You've earned a point!");
-					}else{
-						System.out.println("You have already entered that answer!");	
-					}
-
-					
-					
-				}else{ 
-					String userGuessUp = userGuess.toUpperCase();
-					System.out.println(userGuessUp == (String)line);
-					System.out.printf("User entered : %s \n Line read was:  %s\n\n",(String)userGuess.toUpperCase(),(String)line); 
-				}
-				
+				//add all the words in the file to an array list
+				//also remove 'null' from the array list
+				if (line != null){
+					//adds the string to the arrayList
+					wordList.add(line);
+				}	
 			}
-			//check the FoundAnswer boolean to see if the player earned a point, then reset the boolean
-			if (FoundAnswer == true) {
-				// add points based on time of completion
+			System.out.println(wordList);//TODO: remove in final product, Reason: gives away the answers
+			//scan the list and see if the users input is in the arraylist
+			if(wordList.contains(userGuess.toUpperCase())){
 				score += 1;
-				//change found answer to false
-				FoundAnswer = false;
-			}				
+				System.out.println("you've got an answer right!");
+				//delete the word from the list 
+				wordList.remove(userGuess.toUpperCase());
+			}
 			//close the file 
+			System.out.printf("user score : %d\n\n " , score);
+			
+			System.out.println(wordList);// TODO: remove in final product, same reason in line 51
+				
 			br.close();
+			//after file closes pass wordList into GameBoard to draw the board 
+			GameBoard(wordList);
 							
 		} catch( Exception ex){
 		}
 		
 	}
+	//method to display the game board
+	private static Map<String,String> GameBoard(ArrayList<String> wordList){
+		//create new array list from the pre existing word list 
+		//iterate through wordList
+		
+		// create dictionary to hold each word and create a certain amount of dashes determined by its length
+		Map<String, String> gameBoard = new HashMap<String, String>();	
+
+		for ( String index : wordList){
+			
+			System.out.println("element in array list : " + index);		
+			//find the size of the index 
+			System.out.println("Size of the index in the array list : " + index.length());
+			String dashes = "";
+			// for loop to determine how many dashes will be in the string  
+			for (int i = 0 ; i < index.length();i++){
+				dashes += " _ ";
+			}
+			gameBoard.put(index, dashes);
+		}
+
+		System.out.println("Game board: ");
+		for ( Map.Entry<String, String> entry : gameBoard.entrySet()){
+
+			System.out.println(entry.getValue());
+		}
+		return gameBoard;
+		
+	} 
 
 }
