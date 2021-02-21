@@ -1,7 +1,8 @@
+package com.ryanmcvicker12;
 import java.util.*;
 import javax.swing.*;
 import java.io.*;
-
+import com.ryanmcvicker12.GameBoard;
 //Ryan McVicker
 // 2.20.2021 
 //TODO: need to remove null and ' ' from wordlist
@@ -63,36 +64,28 @@ public class Garble{
 				
 			br.close();
 			//after file closes pass wordList into GameBoard to draw the board 
-			GameBoard(wordList);
 							
 		} catch( Exception ex){
 		}
 		
 	}
-	//method to display the game board
-	private static void GameBoard(ArrayList<String> wordList){
-		//create new array list from the pre existing word list 
-		//iterate through wordList
-		
-		// create dictionary to hold each word and create a certain amount of dashes determined by its length
-		Dictionary gameBoard = new Hashtable();
+	// main gameloop file 
+	
+	public static void GameLoop(){
 
-		for ( String index : wordList){
+		int PLAYER_SCORE;
+		boolean IS_GAME_OVER = false;
+		GameBoard levelOneBoard = new GameBoard();	
+		//run until IS_GAME_OVER IS TRUE
+		while(IS_GAME_OVER != true){
+
+			// game loop here 
 			
-			System.out.println("element in array list : " + index);		
-			//find the size of the index 
-			System.out.println("Size of the index in the array list : " + index.length());
-			// ArrayList<String,String> gameBoard = new ArrayList<String,String>();
-			String wordToDash = new String("_ ");
-			gameBoard.put(index, );
-		}
+		} 
 
-		System.out.println("Game board: ");
-		//print all the values in the dictionary 
-		for ( Enumeration i = gameBoard.elements(); i.hasMoreElements();)
-		{
-			System.out.println("value in dictionary : " + i.nextElement());
-		}
-	} 
+	}
+
+
+
 
 }
