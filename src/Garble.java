@@ -11,6 +11,7 @@ import java.io.*;
 // for level 1 the letters are : "LWLMOE"
 public class Garble{
 
+	
 	public static void main(String[] args) throws IOException {
 		
 		// scanner object for reading input 
@@ -69,33 +70,29 @@ public class Garble{
 		
 	}
 	//method to display the game board
-	private static Map<String,String> GameBoard(ArrayList<String> wordList){
+	private static void GameBoard(ArrayList<String> wordList){
 		//create new array list from the pre existing word list 
 		//iterate through wordList
 		
 		// create dictionary to hold each word and create a certain amount of dashes determined by its length
-		Map<String, String> gameBoard = new HashMap<String, String>();	
+		Dictionary gameBoard = new Hashtable();
 
 		for ( String index : wordList){
 			
 			System.out.println("element in array list : " + index);		
 			//find the size of the index 
 			System.out.println("Size of the index in the array list : " + index.length());
-			String dashes = "";
-			// for loop to determine how many dashes will be in the string  
-			for (int i = 0 ; i < index.length();i++){
-				dashes += " _ ";
-			}
-			gameBoard.put(index, dashes);
+			// ArrayList<String,String> gameBoard = new ArrayList<String,String>();
+			String wordToDash = new String("_ ");
+			gameBoard.put(index, );
 		}
 
 		System.out.println("Game board: ");
-		for ( Map.Entry<String, String> entry : gameBoard.entrySet()){
-
-			System.out.println(entry.getValue());
+		//print all the values in the dictionary 
+		for ( Enumeration i = gameBoard.elements(); i.hasMoreElements();)
+		{
+			System.out.println("value in dictionary : " + i.nextElement());
 		}
-		return gameBoard;
-		
 	} 
 
 }
