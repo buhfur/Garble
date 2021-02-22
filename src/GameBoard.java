@@ -1,9 +1,11 @@
-package com.ryanmcvicker12;
+package com.ryanmcvicker12; 
 import java.util.*;
+
+// class for printing the game board for each level
 
 public class GameBoard{
 
-	public static Map<String,String> GameBoard(ArrayList<String> wordList){
+	public void PrintBoard(ArrayList<String> wordList){
 			//create new array list from the pre existing word list 
 			//iterate through wordList
 			
@@ -12,9 +14,7 @@ public class GameBoard{
 
 			for ( String index : wordList){
 				
-				System.out.println("element in array list : " + index);		
 				//find the size of the index 
-				System.out.println("Size of the index in the array list : " + index.length());
 				String dashes = "";
 				// for loop to determine how many dashes will be in the string  
 				for (int i = 0 ; i < index.length();i++){
@@ -24,12 +24,16 @@ public class GameBoard{
 			}
 
 			System.out.println("Game board: ");
-			for ( Map.Entry<String, String> entry : gameBoard.entrySet()){
+			for (var value : gameBoard.values()){
 
-				System.out.println(entry.getValue());
+				System.out.println(value);
 			}
-			return gameBoard;
 			
-		} 
+			System.out.println("====================");	
+			System.out.println("| L  W  L  M  O  E |");	
+			System.out.println("====================");	
+	} 
+	
+	
 
 }
