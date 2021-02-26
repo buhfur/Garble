@@ -80,6 +80,8 @@ public class Garble{
 
 			String userGuess = userInput.nextLine();				
 
+			OSValidator osv = new OSValidator();
+
 			//check the users input 
 
 			if(wordList.contains(userGuess.toUpperCase())) {
@@ -88,6 +90,10 @@ public class Garble{
 				if ( foundAnswers.contains(userGuess.toUpperCase())){
 
 					System.out.println("you have already guessed that answer!");
+
+					//clear the screen
+
+					osv.ClearScreen();
 
 				}else{	
 
@@ -98,11 +104,21 @@ public class Garble{
 					wordList.remove(userGuess.toUpperCase());
 
 					foundAnswers.add(userGuess.toUpperCase());//do i really need this list?
+
+					//clear the screen
+
+					osv.ClearScreen();
+
 				}
 			
 				
 			}else{
 				System.out.println("that answer is wrong!");
+
+				//clear the screen
+
+				OSValidator.ClearScreen();
+
 			}
 				
 		} 
