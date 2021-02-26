@@ -1,7 +1,7 @@
 # Garble
 English mini game from Bully
 
-##Compiling
+## Compiling
 
 ```
 $ cd Garble/src
