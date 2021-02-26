@@ -11,7 +11,6 @@ public class Garble{
 	public static void main(String[] args) throws IOException {
 		
 		Garble obj = new Garble();
-		
 		//open the text file and check if the users input matches any of the words in the file
 		
 		String path = "level1.txt";
