@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.io.*;
 //Ryan McVicker
 // 2.20.2021 
-//TODO: need to remove null and ' ' from wordlist
-//TODO: make game loop and add in 
-
+//TODO: need to remove dashes comparative to the word entered 
 // gonna try putting all the words in a text file and ask the user for an input and make sure the word is in there
 // for level 1 the letters are : "LWLMOE"
 public class Garble{
@@ -69,7 +67,7 @@ public class Garble{
 			// determine if the player earned points
 			// clear the console ( only in command line version)
 			GameBoard theBoard = new GameBoard();
-			theBoard.PrintBoard(wordList);
+			Map<String, String> returnedBoard = theBoard.PrintBoard(wordList);
 			System.out.print("Enter a word : ");
 			String userGuess = userInput.nextLine();				
 			//check the users input 

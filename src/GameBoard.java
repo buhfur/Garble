@@ -4,8 +4,8 @@ import java.util.*;
 // class for printing the game board for each level
 
 public class GameBoard{
-
-	public void PrintBoard(ArrayList<String> wordList){
+	//return a Map of the board to use in Garble.java
+	public Map<String,String> PrintBoard(ArrayList<String> wordList){
 			//create new array list from the pre existing word list 
 			//iterate through wordList
 			
@@ -23,15 +23,18 @@ public class GameBoard{
 				gameBoard.put(index, dashes);
 			}
 
+			//for loop to print out game board
 			System.out.println("Game board: ");
 			for (var value : gameBoard.values()){
-
+				//change the dashes here?
+				//try to index the list given the guess?
 				System.out.println(value);
 			}
 			
 			System.out.println("====================");	
 			System.out.println("| L  W  L  M  O  E |");	
 			System.out.println("====================");	
+			return gameBoard;
 	} 
 	
 	
