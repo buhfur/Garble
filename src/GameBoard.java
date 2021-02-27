@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GameBoard{
 	//return a Map of the board to use in Garble.java
-	public Map<String,String> PrintBoard(ArrayList<String> wordList){
+	public Map<String,String> PrintBoard(ArrayList<String> wordList, ArrayList<String> foundAnswers){
 			//create new array list from the pre existing word list 
 			//iterate through wordList
 			
@@ -27,11 +27,17 @@ public class GameBoard{
 			//for loop to print out game board
 			System.out.println("Game board: ");
 			for (var value : gameBoard.values()){
-				//change the dashes here?
-				//try to index the list given the guess?
 				System.out.println(value);
+				//print all foundAnswers
 			}
-			
+
+
+			if( foundAnswers.size() > 0 ){
+				for ( var foundValue : foundAnswers ){
+					System.out.println(foundValue);
+				}
+			}
+
 			System.out.println("====================");	
 			System.out.println("| L  W  L  M  O  E |");	
 			System.out.println("====================");	

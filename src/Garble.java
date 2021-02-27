@@ -63,18 +63,12 @@ public class Garble{
 		ArrayList<String> foundAnswers = new ArrayList<String>();	
 		Scanner userInput = new Scanner(System.in);
 		//run until IS_GAME_OVER IS TRUE
-		while(IS_GAME_OVER != true){
+		while(foundAnswers.size() < 18){
 
-			// game loop here 
-			// get answer from player and then check 
-			//first print the game board 
-			// get the players input
-			// determine if the player earned points
-			// clear the console ( only in command line version)
 
 			GameBoard theBoard = new GameBoard();
 
-			Map<String, String> returnedBoard = theBoard.PrintBoard(wordList);
+			Map<String, String> returnedBoard = theBoard.PrintBoard(wordList, foundAnswers);
 
 			System.out.print("Enter a word : ");
 
@@ -103,7 +97,7 @@ public class Garble{
 					
 					wordList.remove(userGuess.toUpperCase());
 
-					foundAnswers.add(userGuess.toUpperCase());//do i really need this list?
+					foundAnswers.add(userGuess.toUpperCase());
 
 					//clear the screen
 
@@ -113,15 +107,18 @@ public class Garble{
 			
 				
 			}else{
+
 				System.out.println("that answer is wrong!");
 
 				//clear the screen
 
-				OSValidator.ClearScreen();
+				osv.ClearScreen();
 
 			}
 				
 		} 
+		//could print the time it took to complete the game???
+		System.out.println("You guessed all the words! Thanks for playing! :)");
 
 	}
 

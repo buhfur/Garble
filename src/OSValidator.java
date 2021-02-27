@@ -44,14 +44,14 @@ public class OSValidator {
                 // clear screen only the first time
                 c.writer().print(ESC + "[2J");
                 c.flush();
-                //Thread.sleep(200);
 
                 for (int i = 0; i < 100; ++i) {
+
                         // reposition the cursor to 1|1
+
                         c.writer().print(ESC + "[1;1H");
                         c.flush();
                         c.flush();
-                        //Thread.sleep(200);
                     }
                 } else if (IS_SOLARIS) {
                     System.out.println("NO SOLUTION FOR SOLARIS YET.");
