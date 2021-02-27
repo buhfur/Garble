@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GameBoard{
 	//return a Map of the board to use in Garble.java
-	public Map<String,String> PrintBoard(ArrayList<String> wordList, ArrayList<String> foundAnswers){
+	public Map<String,String> PrintBoard(ArrayList<String> wordList, ArrayList<String> foundAnswers, String level){
 			//create new array list from the pre existing word list 
 			//iterate through wordList
 			
@@ -37,9 +37,16 @@ public class GameBoard{
 					System.out.println(foundValue);
 				}
 			}
-
+			//need to change this to meet the level
+			Map<String,String> levelLetters = new HashMap<String, String>();
+			levelLetters.put("level1.txt", " L  W  L  M  O  E ");
+			levelLetters.put("level2.txt", " H  S  G  F  T  I ");
+			levelLetters.put("level3.txt", " E  M  I  S  S  L");
+			levelLetters.put("level4.txt", " R  A  N  Y  C  O");
+			levelLetters.put("level5.txt", " G  A  E  D  R  G");
+			//print out the letters
 			System.out.println("====================");	
-			System.out.println("| L  W  L  M  O  E |");	
+			System.out.printf("| %s |\n", levelLetters.get(level));	
 			System.out.println("====================");	
 			return gameBoard;
 	} 
