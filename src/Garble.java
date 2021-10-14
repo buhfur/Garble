@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.io.*;
 //Ryan McVicker
 // 2.20.2021 
-//TODO: need to remove dashes comparative to the word entered 
-// for level 1 the letters are : "LWLMOE"
 public class Garble{
+
 	public static OSValidator osv = new OSValidator();
 	public static String userLevelPick;
 	public static String path, playAgain;
@@ -101,7 +100,6 @@ public class Garble{
 		//run until IS_GAME_OVER IS TRUE
 		while(foundAnswers.size() < wordListSize){
 
-
 			GameBoard theBoard = new GameBoard();
 			//pass in the levelMap to give an input for a map in GameBoard.java that will print out the right letters
 			Map<String, String> returnedBoard = theBoard.PrintBoard(wordList, foundAnswers, levelMap.get(userLevelPick)  );
@@ -110,19 +108,14 @@ public class Garble{
 
 			userGuess = sc.nextLine();				
 
-//			OSValidator osv = new OSValidator();
-
 			//check the users input 
 
 			if(wordList.contains(userGuess.toUpperCase())) {
+
 				//make sure the player hasnt already guessed that word 
 
 				if ( foundAnswers.contains(userGuess.toUpperCase())){
-
-					System.out.println("you have already guessed that answer!");
-
 					//clear the screen
-
 					osv.ClearScreen();
 
 				}else{	
@@ -135,27 +128,14 @@ public class Garble{
 
 					foundAnswers.add(userGuess.toUpperCase());
 
-					//clear the screen
-
-					osv.ClearScreen();
-
-				}
-			
-				
+					osv.ClearScreen(); 
+				} 
 			}else{
-
-				System.out.println("that answer is wrong!");
-
-				//clear the screen
-
-				osv.ClearScreen();
-
-			}
-				
+				osv.ClearScreen(); 
+			} 
 		} 
-		//could print the time it took to complete the game???
+
 		System.out.println("You guessed all the words! Thanks for playing! :)");
-		//ask the player if they would like to advance to the next level
 	}
 
 

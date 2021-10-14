@@ -7,17 +7,21 @@ import java.util.*;
 public class GameBoard{
 	//return a Map of the board to use in Garble.java
 	public Map<String,String> PrintBoard(ArrayList<String> wordList, ArrayList<String> foundAnswers, String level){
+
 			//create new array list from the pre existing word list 
-			//iterate through wordList
 			
 			// create dictionary to hold each word and create a certain amount of dashes determined by its length
+
 			Map<String, String> gameBoard = new HashMap<String, String>();	
 
 			for ( String index : wordList){
 				
 				//find the size of the index 
+
 				String dashes = "";
+
 				// for loop to determine how many dashes will be in the string  
+
 				for (int i = 0 ; i < index.length();i++){
 					dashes += " _ ";
 				}
@@ -48,6 +52,7 @@ public class GameBoard{
 			System.out.println("====================");	
 			System.out.printf("| %s |\n", levelLetters.get(level));	
 			System.out.println("====================");	
+
 			return gameBoard;
 	} 
 	
