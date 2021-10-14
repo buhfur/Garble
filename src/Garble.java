@@ -20,8 +20,8 @@ public class Garble{
 		//open the text file and check if the users input matches any of the words in the file
 
 		//map for storing the levels and their respective file path
-		levelMap = new HashMap<String,String>();
 
+		levelMap = new HashMap<String,String>();
 		levelMap.put("1" , "level1.txt");
 		levelMap.put("2" , "level2.txt");
 		levelMap.put("3" , "level3.txt");
@@ -58,13 +58,11 @@ public class Garble{
 			String line = br.readLine();
 
 			ArrayList<String> wordList = new ArrayList<String>();
-
 			while(line != null){
 				
 				line = br.readLine();
 
 				//add all the words in the file to an array list
-
 				//also remove 'null' from the array list
 				
 				if (line != null){
@@ -72,17 +70,21 @@ public class Garble{
 					//adds the string to the arrayList
 
 					wordList.add(line);
-					
-				}	
-			}
+
+					}	
+				}
+
 			//close the file 
-			
 				
 			br.close();
+
 			//after file closes call game loop 
+
 			obj.GameLoop(wordList);
+
 							
 		} catch( Exception ex){
+			System.out.println(ex);
 		}
 		
 	}
